@@ -17,6 +17,7 @@ function main(){
     let intervalo;
     
     iniciar.addEventListener("click", ()=>{
+        relogio.style.color = "black";
         clearInterval(intervalo);
         intervalo = setInterval(()=> {
             relogio.innerHTML = adicionarSegundo(data);
