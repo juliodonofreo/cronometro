@@ -1,6 +1,5 @@
-function adicionarSegundo(relogio) {
-    const  minutos = relogio.textContent;
-    console.log(minutos);
+function criarData() {
+    return new Date(0, 0, 0, 00, 00, 00);
 }
 
 function main(){    
@@ -9,8 +8,7 @@ function main(){
     const pausar = document.querySelector(".pausar");
     const iniciar = document.querySelector(".iniciar");
 
-    const data = new Date(2003, 06, 16, 00, 00, 00);
-
+    let data = criarData();
     let intervalo;
     
     iniciar.addEventListener("click", ()=>{
@@ -20,15 +18,16 @@ function main(){
         }, 1000);
     });
 
-    zerar.addEventListener("click", ()=>{
-        relogio.innerHTML = "Zerar"
-
-    });
-
-
     pausar.addEventListener("click", ()=>{
         relogio.style.color = "red";
         clearInterval(intervalo);
+    });
+
+    zerar.addEventListener("click", ()=>{
+        clearInterval(intervalo);
+        relogio.style.color = "black";
+        data = criarData();
+        relogio.innerHTML = data.toLocaleTimeString('pt-BR');
     });
 }
 
