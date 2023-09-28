@@ -9,10 +9,12 @@ function main(){
     const pausar = document.querySelector(".pausar");
     const iniciar = document.querySelector(".iniciar");
 
+    const data = new Date(2003, 06, 16, 00, 00, 00);
 
+    let intervalo;
+    
     iniciar.addEventListener("click", ()=>{
-        const data = new Date(2003, 12, 16, 00, 00, 00);
-        setInterval(()=> {
+        intervalo = setInterval(()=> {
             data.setSeconds(data.getSeconds() + 1);
             relogio.innerHTML = data.toLocaleTimeString('pt-BR');
         }, 1000);
@@ -23,9 +25,10 @@ function main(){
 
     });
 
-    pausar.addEventListener("click", ()=>{
-        relogio.innerHTML = "Pausar"
 
+    pausar.addEventListener("click", ()=>{
+        relogio.style.color = "red";
+        clearInterval(intervalo);
     });
 }
 
